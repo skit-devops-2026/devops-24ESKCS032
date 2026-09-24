@@ -1,19 +1,5 @@
 package io.smarthome.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-@RequestMapping("/api/devices")
-public class DeviceController {
-
-    @GetMapping
-    public String devices() {
-        return "Devices API is working!";
-    }
-}package io.smarthome.controller;
-
 import io.smarthome.model.Device;
 import io.smarthome.repository.DeviceRepository;
 import org.springframework.web.bind.annotation.*;
