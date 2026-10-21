@@ -26,6 +26,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } catch {
         localStorage.removeItem(STORAGE_KEY);
       }
+    } else {
+      const defaultUser = MOCK_USERS[0];
+      setUser(defaultUser);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultUser));
     }
     setIsLoading(false);
   }, []);

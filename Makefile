@@ -33,3 +33,11 @@ docker-build:
 docker-up:
 	docker compose up --build
 
+k8s-apply:
+	kubectl apply -f k8s/deployment.yaml
+	kubectl apply -f k8s/service.yaml
+
+k8s-delete:
+	kubectl delete -f k8s/service.yaml --ignore-not-found
+	kubectl delete -f k8s/deployment.yaml --ignore-not-found
+

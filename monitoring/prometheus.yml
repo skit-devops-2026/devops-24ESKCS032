@@ -1,0 +1,24 @@
+# ==============================================================================
+# Prometheus Configuration for SmartHome Platform (M6)
+# ==============================================================================
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+scrape_configs:
+  # Scrape Spring Boot Backend Micrometer / Actuator Metrics
+  - job_name: 'smarthome-backend'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['backend:8080', 'localhost:8080']
+        labels:
+          app: 'smarthome-backend'
+          environment: 'production'
+
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']

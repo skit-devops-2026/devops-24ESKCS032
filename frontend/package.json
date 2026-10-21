@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "start": "vite preview --host 0.0.0.0 --port 3000",
     "lint": "oxlint",
     "test": "npx -y tsx --test src/test/data.test.ts src/test/time.test.ts src/test/utils.test.ts",
     "preview": "vite preview"

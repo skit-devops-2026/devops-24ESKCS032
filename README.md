@@ -25,11 +25,30 @@ make install
 make run
 ```
 
+## Live Demo
+
+https://smarthome-dashboard-24eskcs032.onrender.com
+
 ## Live URL
 
-Pending M5 deployment.
+https://smarthome-dashboard-24eskcs032.onrender.com
+
+## DevOps Infrastructure (M5, M6, M7)
+
+### M5 — Containerization
+- **Dockerfile**: Production multi-stage Docker build with Node.js LTS builder and optimized Nginx runtime.
+- **Docker Compose**: `docker compose up --build` launches PostgreSQL 16, Spring Boot backend, and React dashboard with health checks.
+- **Registry**: GitHub Container Registry (`ghcr.io/skit-devops-2026/devops-24ESKCS032-frontend:latest`).
+
+### M6 — Deployment & Monitoring
+- **Live Deployment**: Render cloud platform hosting containerized dashboard.
+- **Prometheus**: Configuration located at `monitoring/prometheus.yml` scraping Spring Boot Actuator at `/actuator/prometheus`.
+- **Grafana Dashboard**: Committed at `monitoring/dashboard.json` monitoring availability, CPU, memory, throughput, and latency.
+
+### M7 — Kubernetes
+- **Deployment Manifest**: `k8s/deployment.yaml` with 2 replicas, probes, and resource constraints referencing the GHCR image.
+- **Service Manifest**: `k8s/service.yaml` exposing the application via NodePort (30080).
 
 ## Health endpoint
 
-`GET /health` returns the running commit SHA. See `Makefile` and the milestone
-sheet for why this is required.
+`GET /api/health` returns the running health check confirmation message.
